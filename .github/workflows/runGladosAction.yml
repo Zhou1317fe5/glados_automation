@@ -3,10 +3,8 @@ name: 开始每日签到
 on:
   workflow_dispatch:
   schedule:
-    # UTC 2点00分(北京时间 10点00分)
-    # 2/10 从 UTC 0点00分(北京时间 8点00分) 开始每隔 10 小时签到一次，防止网络问题导致的签到不上
-    - cron: 0 0/10 * * *
-  # 标星时触发工作流程
+    # 每天UTC的0点(北京时间8点)触发，然后通过脚本随机延迟执行
+    - cron: '0 0 * * *'
   watch:
     types: [started]
 
@@ -23,10 +21,25 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install requests
+      - name: Generate random delay
+        id: delay
+        run: |
+          # 生成一个随机的小时数和分钟数，小时在0到8之间
+          HOUR=$(shuf -i 0-8 -n 1)
+          MINUTE=$(shuf -i 0-59 -n 1)
+          # 计算总延迟时间（以秒为单位）
+          DELAY=$((HOUR * 3600 + MINUTE * 60))
+          echo "Random delay of $HOUR hours and $MINUTE minutes"
+          echo "::set-output name=delay::$DELAY"
+      - name: Sleep for random time
+        run: |
+          DELAY=${{ steps.delay.outputs.delay }}
+          echo "Sleeping for $DELAY seconds"
+          sleep $DELAY
       - name: Run checkin
         run: |
           python3 glados.py
         env: 
           GLADOS_COOKIE: "${{ secrets.GLADOS_COOKIE }}"
-          PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
+          PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}"
       - uses: gautamkrishnar/keepalive-workflow@master  
