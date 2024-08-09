@@ -3,7 +3,7 @@
 * #### 基于Github Action
 * #### 每天进行自动签到
     ###### 实际上通常会延迟，但不会太久，庆幸的是大多情况下我们并不关心是否准时
-* #### 可用pUSHPLUS通过公众号推送结果
+* #### 可用PUSHPLUS通过公众号推送结果
 
 ## GLaDOS
 >GLaDOS为用户提供最快速，稳定和安全的端点，使他们充满信心地访问高速国际互联网、Netflix和隐私。
@@ -12,15 +12,14 @@
 
 [GLaDOS项目地址](https://github.com/glados-network/GLaDOS)
 
-## 代码说明💻
-[Github Actions GLaDOS自动签到](https://blog.csdn.net/qq_38523017/article/details/109855848)
+
 
 ## 使用说明💡
 
 ### 一、准备工作📝
-* #### serve酱的sckey（不需要可以跳过）
+* #### PUSHPLUS的TOKEN（不需要可以跳过）
 
-![sckey](imgs/sckey.png)
+![sckey](imgs/PUSHPLUS_TOKEN.png)
 
 * #### 账号的cookie（并非仅此单一获取方式）
     * ##### 打开GLaDos并登陆，找到右上角“签到”跳转到签到页面
@@ -45,11 +44,7 @@
 
 * #### 设置账号的cookie（第一步准备工作中所找到的cookie）
 1. 前往项目的`Settings`里的`Secret`栏里面设置`GLADOS_COOKIE`
-2. 多账号的分隔符为 `--分隔符--`    (**非常重要**)
-例如
-   ```text
-   aaaaaaaaaa(账号1)--分隔符---cccccc(账号2)
-   ```
+2. 多个账号需使用 '&' 隔开 示例：cookie1&cookie2&cookie3
 
 ![secrets](imgs/secrets.png)
 
@@ -71,7 +66,6 @@
 ## 修改定时🕤
 #### 1. 打开.github/workflows/runGladosAction.yml
 #### 2. 修改crontab表达式
-![modifySchedule](imgs/modifySchedule.png)
 
 
 ## Star⭐
