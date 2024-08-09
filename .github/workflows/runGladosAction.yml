@@ -25,8 +25,8 @@ jobs:
         id: delay
         run: |
           # 生成一个随机的小时数和分钟数，小时在0到2之间
-          HOUR=$(shuf -i 0-2 -n 1)
-          MINUTE=$(shuf -i 0-59 -n 1)
+          HOUR=$(shuf -i 0-1 -n 1)
+          MINUTE=$(shuf -i 0-50 -n 1)
           # 计算总延迟时间（以秒为单位）
           DELAY=$((HOUR * 3600 + MINUTE * 60))
           echo "Random delay of $HOUR hours and $MINUTE minutes"
