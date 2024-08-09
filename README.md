@@ -1,9 +1,9 @@
 # GLaDOS 每日签到(支持多账号)💮
 
 * #### 基于Github Action
-* #### 每天北京时间9点30分（UTC时间1点30分）进行自动签到
+* #### 每天进行自动签到
     ###### 实际上通常会延迟，但不会太久，庆幸的是大多情况下我们并不关心是否准时
-* #### 可用server酱通过公众号推送结果
+* #### 可用pUSHPLUS通过公众号推送结果
 
 ## GLaDOS
 >GLaDOS为用户提供最快速，稳定和安全的端点，使他们充满信心地访问高速国际互联网、Netflix和隐私。
@@ -41,10 +41,10 @@
 ![fork](imgs/fork.jpg)
 
 ### 三、设置密钥🔑
-* #### SCKEY serve酱的sckey（不需要可以不创建或不设置）
+* #### `PUSHPLUS_TOKEN` PUSHPLUS的TOKEN（不需要可以不创建或不设置）
 
 * #### 设置账号的cookie（第一步准备工作中所找到的cookie）
-1. 前往项目的`Settings`里的`Secret`栏里面设置`COOKIES`
+1. 前往项目的`Settings`里的`Secret`栏里面设置`GLADOS_COOKIE`
 2. 多账号的分隔符为 `--分隔符--`    (**非常重要**)
 例如
    ```text
